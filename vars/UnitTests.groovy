@@ -1,0 +1,18 @@
+def call(String rubyVersion = '1.9.3', String puppetVersion = '3.7.3') {
+  node(label: 'testslave') {
+    withCredentials([usernamePassword(credentialsId: 'githublogin', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+      checkout scm
+      def String setup = """/bin/bash -lc 'echo Package installation && \
+      export PUPPET_GEM_VERSION=${puppetVersion} && \
+      rm Gemfile.lock && \
+      rvm use ${rubyVersion} && ruby --version && \
+      mkdir -p spec/fixtures && \
+      gem install bundler && \
+      bundle install --without acceptance_test quality release && \
+      ssh-keyscan -H github.com >> ~/.ssh/known_hosts && \
+      echo unit test start && \
+      bundle exec rake spec'"""
+      sh setup
+    }
+  }
+}
