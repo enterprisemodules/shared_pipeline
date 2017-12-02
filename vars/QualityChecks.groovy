@@ -1,4 +1,6 @@
-def call(String rubyVersion = '2.1.10', String puppetVersion = '4.0.0') {
+def call() {
+  def rubyVersion = '2.4.0'
+  def puppetVersion = '5.1.0'
   node(label: 'testslave') {
     withCredentials([usernamePassword(credentialsId: 'githublogin', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
       checkout scm
