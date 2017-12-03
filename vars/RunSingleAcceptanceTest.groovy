@@ -11,6 +11,7 @@ def call( String fileName){
       rvm use ${rubyVersion} && ruby --version && \
       mkdir -p spec/fixtures && \
       gem install bundler && \
+      bundle config mirror.https://rubygems.org http://ci01.enterprisemodules.com:9292 && \
       bundle install --without unit_test quality release && \
       export DOCKER_HOST=tcp://ci02.enterprisemodules.com:2376 DOCKER_TLS_VERIFY=1 DOCKER_CERT_PATH=/usr/local/etc/jenkins/certs/ PUPPET_INSTALL_TYPE=agent PUPPET_INSTALL_VERSION=1.10.8 && \
       echo $USERNAME && \

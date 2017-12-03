@@ -9,6 +9,7 @@ def call() {
       rm Gemfile.lock && \
       rvm use ${rubyVersion} && ruby --version && \
       gem install bundler && \
+      bundle config mirror.https://rubygems.org http://ci01.enterprisemodules.com:9292 && \
       bundle install --without acceptance_test unit_test release && \
       ssh-keyscan -H github.com >> ~/.ssh/known_hosts && \
       echo Quality Check start && \
