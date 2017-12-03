@@ -8,7 +8,7 @@ def call() {
         specName = it.toString()
         hash["Acceptance Tests '${specName}'"] = { RunSingleAcceptanceTest(specName) }
       }
-      failFast true
+      hash['failFast'] = true
       parallel(hash)
     }
   }
