@@ -1,7 +1,7 @@
 def call( String fileName){
   def rubyVersion = '2.4.0'
   def puppetVersion = '5.1.0'
-  node(label: 'testslave') {
+  node(label: 'beaker') {
     withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
       echo "Running single Acceptance Test on ${fileName}."
       checkout scm

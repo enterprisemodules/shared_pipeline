@@ -1,5 +1,5 @@
 def call() {
-  node(label: 'testslave') {
+  node(label: 'beaker') {
     withCredentials([usernamePassword(credentialsId: 'githublogin', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
       checkout scm
       def specs = findFiles(glob: 'spec/acceptance/**/*_spec.rb')
