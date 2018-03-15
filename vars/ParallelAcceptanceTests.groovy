@@ -6,9 +6,9 @@ def call() {
       hash = [:]
       specs.each {
         def specName = it.toString()
-        hash["Acceptance Tests '${specName}'"] = { RunSingleAcceptanceTest(specName) }
+        hash.put("Acceptance Tests '${specName}'", { RunSingleAcceptanceTest(specName) })
       }
-      hash['failFast'] = true
+      hash.put('failFast', true)
       parallel(hash)
     }
   }
