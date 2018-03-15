@@ -5,7 +5,7 @@ def call() {
       def specs = findFiles(glob: 'spec/acceptance/**/*_spec.rb')
       hash = [:]
       specs.each {
-        specName = it.toString()
+        def specName = it.toString()
         hash["Acceptance Tests '${specName}'"] = { RunSingleAcceptanceTest(specName) }
       }
       hash['failFast'] = true
