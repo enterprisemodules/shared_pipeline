@@ -18,7 +18,7 @@ def call( String fileName){
         echo $USERNAME && \
         docker login -u=$USERNAME -p=$PASSWORD && \
         docker pull centos:7 && \
-        puppet --version \
+        puppet --version &&\
         bundle exec rspec --tag ~@older_version ${fileName}'"""
         sh setup
       }
