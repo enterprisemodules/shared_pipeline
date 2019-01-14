@@ -11,6 +11,7 @@ def call( String fileName){
         rm Gemfile.lock && \
         rvm use ${rubyVersion} && ruby --version && \
         gem update --system && \
+        gem install bundler && \
         mkdir -p spec/fixtures && \
         bundle config mirror.https://rubygems.org http://ci01.enterprisemodules.com:9292 && \
         bundle install --without unit_test quality release && \
