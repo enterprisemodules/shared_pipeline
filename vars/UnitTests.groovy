@@ -8,6 +8,7 @@ def call(String rubyVersion = '1.9.3', String puppetVersion = '3.7.3') {
         rm Gemfile.lock && \
         rvm use ${rubyVersion} && ruby --version && \
         mkdir -p spec/fixtures && \
+        gem install bundler && \
         bundle config mirror.https://rubygems.org http://ci01.enterprisemodules.com:9292 && \
         bundle install --without acceptance_test quality release && \
         ssh-keyscan -H github.com >> ~/.ssh/known_hosts && \
