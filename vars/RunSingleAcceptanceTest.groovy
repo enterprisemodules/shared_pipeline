@@ -10,7 +10,6 @@ def call( String fileName){
         export PUPPET_GEM_VERSION=${puppetVersion} && \
         rm Gemfile.lock && \
         rvm use ${rubyVersion} && ruby --version && \
-        gem update --system && \
         gem install bundler && \
         mkdir -p spec/fixtures && \
         bundle config mirror.https://rubygems.org http://ci01.enterprisemodules.com:9292 && \
