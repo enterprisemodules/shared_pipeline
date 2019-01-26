@@ -1,6 +1,6 @@
 def call( String fileName){
   def rubyVersion = '2.4.0'
-  def puppetVersion = '6.0.0'
+  def puppetVersion = '6.2.0'
   node(label: 'beaker') {
     retry(2) {
       withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
