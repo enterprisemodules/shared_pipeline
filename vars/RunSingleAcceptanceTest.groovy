@@ -1,13 +1,13 @@
 def call( String fileName){
   def rubyVersion = '2.4.0'
-  def puppetVersion = '6.2.0'
+  def puppetVersion = 'puppet6'
   node(label: 'beaker') {
     retry(2) {
       withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
         echo "Running single Acceptance Test on ${fileName}."
         checkout scm
         def String setup = """/bin/bash -lc 'echo Package installation && \
-        export PUPPET_INSTALL_VERSION=${puppetVersion} && \
+        export BEAKER_PUPPET_COLLECTION=${puppetVersion} && \
         rm Gemfile.lock && \
         rvm use ${rubyVersion} && ruby --version && \
         gem install bundler && \
