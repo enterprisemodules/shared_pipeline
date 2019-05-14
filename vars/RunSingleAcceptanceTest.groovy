@@ -7,7 +7,7 @@ def call( String fileName){
         echo "Running single Acceptance Test on ${fileName}."
         checkout scm
         def String setup = """/bin/bash -lc 'echo Package installation && \
-        export PUPPET_GEM_VERSION=${puppetVersion} && \
+        export PUPPET_INSTALL_VERSION=${puppetVersion} && \
         rm Gemfile.lock && \
         rvm use ${rubyVersion} && ruby --version && \
         gem install bundler && \
